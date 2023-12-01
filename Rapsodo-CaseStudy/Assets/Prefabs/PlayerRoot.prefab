@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8482885210330014723}
   - component: {fileID: 159907308673318212}
+  - component: {fileID: 8044532540757481465}
+  - component: {fileID: 5818290973933935226}
   - component: {fileID: 3262940622529290603}
   m_Layer: 0
   m_Name: PlayerRoot
@@ -48,6 +50,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
+  verticalInput: 0
+  horizontalInput: 0
+--- !u!114 &8044532540757481465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182371699449913192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e6aa13bb6a2df49ba2510041b348f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5818290973933935226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182371699449913192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b841cde47deda14e938f4dcffdee744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 7
+  rotationSpeed: 15
 --- !u!95 &3262940622529290603
 Animator:
   serializedVersion: 5
