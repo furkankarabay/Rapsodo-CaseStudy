@@ -5,17 +5,20 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     PlayerControls playerControls;
+    private PlayerLocomotion playerLocomotion;
     private AnimatorManager animatorManager;
 
     public Vector2 movementInput;
-    private float moveAmount;
+    public float moveAmount;
 
     public float verticalInput;
     public float horizontalInput;
 
+    public bool jump_Input;
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
+        playerLocomotion = GetComponent<PlayerLocomotion>();
     }
 
     private void OnEnable()
@@ -25,6 +28,9 @@ public class InputManager : MonoBehaviour
             playerControls = new PlayerControls();
 
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+
+            playerControls.FindAction("Jump").performed += i => jump_Input = true;
+
         }
 
         playerControls.Enable();
@@ -38,7 +44,7 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandeMovementInput();
-        //Handle Jump
+        HandeJumpingInput();
         //Handle Action Input
     }
 
@@ -49,5 +55,14 @@ public class InputManager : MonoBehaviour
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
         animatorManager.UpdateAnimatorValues(0, moveAmount);
+    }
+
+    private void HandeJumpingInput()
+    {
+        if(jump_Input)
+        {
+            jump_Input = false;
+            //playerLocomotion.HandleJumping();
+        }
     }
 }
