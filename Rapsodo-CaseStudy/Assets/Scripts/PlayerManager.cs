@@ -18,11 +18,17 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.hasGameStarted)
+            return;
+
         inputManager.HandleAllInputs();
     }
 
     private void FixedUpdate()
     {
+        if (!GameManager.hasGameStarted)
+            return;
+
         playerLocomotion.HandleAllMovement();
     }
 
