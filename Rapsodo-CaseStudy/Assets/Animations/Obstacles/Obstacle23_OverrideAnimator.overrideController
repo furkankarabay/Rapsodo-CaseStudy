@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Obstacle23_OverrideAnimator
+  m_Controller: {fileID: 9100000, guid: 841b39ee522def742ab6176a93fd7a7b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7f9f572b03dc03e41bb9850d7e4fdea5, type: 2}
+    m_OverrideClip: {fileID: -5119419970851430590, guid: fba86780f94471448805c4854d50430e, type: 3}
