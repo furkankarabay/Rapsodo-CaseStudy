@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    // Çeþitlendirilebilir;
-    // Engellerin hýzý, bekleme süresi gibi parametreleri baðlayabiliriz.
-
-    [SerializeField] private int damageAmount;
-
-    public void TriggerObstacle()
+    public class Obstacle : MonoBehaviour
     {
-        EventsSystem.OnDamagedByObstacle?.Invoke(damageAmount);
+        // Çeþitlendirilebilir;
+        // Engellerin hýzý, bekleme süresi gibi parametreleri baðlayabiliriz.
+
+        [SerializeField] private int damageAmount;
+
+        public void TriggerObstacle()
+        {
+            EventsSystem.OnDamagedByObstacle?.Invoke(damageAmount);
+        }
     }
+
 }

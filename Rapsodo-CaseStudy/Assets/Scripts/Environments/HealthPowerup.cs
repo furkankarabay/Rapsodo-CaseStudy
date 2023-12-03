@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/HealthBuff")]
-public class HealthPowerup : PowerupEffect
+
+namespace Rapsodo.MazeGame
 {
-    public int amount;
-    public override void Apply()
+    [CreateAssetMenu(menuName = "Powerups/HealthBuff")]
+    public class HealthPowerup : PowerupEffect
     {
-        EventsSystem.OnPowerupHealthEffect?.Invoke(amount);
+        public int amount;
+        public override void Apply()
+        {
+            EventsSystem.OnPowerupHealthEffect?.Invoke(amount);
+        }
     }
 }
+

@@ -1,36 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    [SerializeField] private TextMeshProUGUI timerText;
-    private float elapsedTime;
-
-    private bool isActivated = false;
-
-    private void Update()
+    public class Timer : MonoBehaviour
     {
-        if (!isActivated)
-            return;
+        [SerializeField] private TextMeshProUGUI timerText;
+        private float elapsedTime;
 
-        elapsedTime += Time.deltaTime;
+        private bool isActivated = false;
 
-        int minutes = Mathf.FloorToInt(elapsedTime / 60);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    public void ToggleTimer()
-    {
-        isActivated = !isActivated;
-        gameObject.SetActive(isActivated);
-
-        if(isActivated)
+        private void Update()
         {
-            elapsedTime = 0;
+            if (!isActivated)
+                return;
+
+            elapsedTime += Time.deltaTime;
+
+            int minutes = Mathf.FloorToInt(elapsedTime / 60);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+
+        public void ToggleTimer()
+        {
+            isActivated = !isActivated;
+            gameObject.SetActive(isActivated);
+
+            if (isActivated)
+            {
+                elapsedTime = 0;
+            }
         }
     }
+
 }
+

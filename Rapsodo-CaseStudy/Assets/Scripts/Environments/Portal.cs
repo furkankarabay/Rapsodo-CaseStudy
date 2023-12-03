@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    private void OnTriggerEnter(Collider other)
+    public class Portal : MonoBehaviour
     {
-        if(other.gameObject.CompareTag("Player"))
+        private void OnTriggerEnter(Collider other)
         {
-            EventsSystem.OnGameFinished?.Invoke(true);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                EventsSystem.OnGameFinished?.Invoke(true);
+            }
         }
     }
+
 }

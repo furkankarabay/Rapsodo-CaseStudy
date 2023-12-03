@@ -1,19 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Healthbar : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    public Slider slider;
-
-    public void SetMaxHealth(int maxHealth)
+    public class Healthbar : MonoBehaviour
     {
-        slider.maxValue = maxHealth;
+        public Slider slider;
+
+        public void SetMaxHealth(int maxHealth)
+        {
+            slider.maxValue = maxHealth;
+        }
+
+        public void SetHealth(int health)
+        {
+            slider.value = health;
+        }
     }
 
-    public void SetHealth(int health)
-    {
-        slider.value = health;
-    }
 }
+

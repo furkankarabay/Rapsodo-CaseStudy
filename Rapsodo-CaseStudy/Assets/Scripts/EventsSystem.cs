@@ -1,28 +1,29 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class EventsSystem
+namespace Rapsodo.MazeGame
 {
-    #region Obstacle Events
+    public class EventsSystem
+    {
+        #region Obstacle Events
 
-    public static Action<int> OnDamagedByObstacle;
+        public static Action<int> OnDamagedByObstacle;
 
-    #endregion
+        #endregion
 
-    #region Powerup Effect
+        #region Powerup Effect
 
-    public static Action<int> OnPowerupHealthEffect;
+        public static Action<int> OnPowerupHealthEffect;
 
-    #endregion
+        #endregion
 
 
-    #region Game Flow
+        #region Game Flow
 
-    public static Action OnCountdownIsOver;
-    public static Action OnGameStarted;
-    public static Action<bool> OnGameFinished;
+        public static Action OnCountdownIsOver;
+        public static Action OnGameStarted;
+        public static Action<bool> OnGameFinished;
 
-    #endregion
+        #endregion
+    }
+
 }

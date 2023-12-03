@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    public PowerupEffect powerupEffect;
-
-    private void OnTriggerEnter(Collider other)
+    public class Powerup : MonoBehaviour
     {
-        if(other.gameObject.CompareTag("Player"))
+        public PowerupEffect powerupEffect;
+
+        private void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
-            powerupEffect.Apply();
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+                powerupEffect.Apply();
+            }
         }
     }
+
 }

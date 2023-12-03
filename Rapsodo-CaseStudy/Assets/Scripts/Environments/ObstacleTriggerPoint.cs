@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleTriggerPoint : MonoBehaviour
+namespace Rapsodo.MazeGame
 {
-    [SerializeField] private Obstacle obstacle;
-
-    private void OnCollisionEnter(Collision collision)
+    public class ObstacleTriggerPoint : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        [SerializeField] private Obstacle obstacle;
+
+        private void OnCollisionEnter(Collision collision)
         {
-            obstacle.TriggerObstacle();
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                obstacle.TriggerObstacle();
+            }
         }
     }
+
 }
