@@ -17,11 +17,12 @@ public class EventsSystem
 
     #endregion
 
+
     #region Game Flow
 
     public static Action OnCountdownIsOver;
     public static Action OnGameStarted;
-    public static Action OnGameFinished;
+    public static Action<bool> OnGameFinished;
 
     #endregion
 }

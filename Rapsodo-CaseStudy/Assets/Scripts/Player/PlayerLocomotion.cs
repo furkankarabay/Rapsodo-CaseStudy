@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerLocomotion : MonoBehaviour
@@ -21,13 +22,14 @@ public class PlayerLocomotion : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Movement Speeds")]
-    [SerializeField] private float walkingSpeed = 1.5f;
     [SerializeField] private float runningSpeed = 5;
     [SerializeField] private float rotationSpeed = 15;
 
     [Header("Jumping")]
     [SerializeField] private float jumpHeight = 3;
     [SerializeField] private float gravityIntensity = -15;
+    [SerializeField] private float cooldown = 1;
+    public bool CanJump = true;
 
     [Header("Movement Flags")] 
     public bool IsJumping;
@@ -99,13 +101,14 @@ public class PlayerLocomotion : MonoBehaviour
         Vector3 raycastOrigin = transform.position - Vector3.up / 2;
         raycastOrigin.y = raycastOrigin.y + raycastHeightOffset;
 
-        if(!IsGrounded && !IsJumping)
+        if(!IsGrounded && !IsJumping )
         {
             if(!playerManager.IsInteracting)
             {
                 animatorManager.PlayTargetAnimation("Falling", true);
             }
 
+            CanJump = false;
             inAirTimer = inAirTimer + Time.deltaTime;
             playerRigidbody.AddForce(transform.forward * leapingVelocity);
             playerRigidbody.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
@@ -116,6 +119,7 @@ public class PlayerLocomotion : MonoBehaviour
             if (!IsGrounded)
             {
                 animatorManager.PlayTargetAnimation("Landing", true);
+                StartCoroutine(CooldownForJumping(1));
             }
 
             inAirTimer = 0;
@@ -130,7 +134,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleJumping()
     {
-        if(IsGrounded)
+        if(IsGrounded && CanJump)
         {
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAnimation("Jump", false);
@@ -141,5 +145,11 @@ public class PlayerLocomotion : MonoBehaviour
             playerRigidbody.velocity = playerVelocity;
 
         }
+    }
+
+    IEnumerator CooldownForJumping(int time)
+    {
+        yield return new WaitForSeconds(time);
+        CanJump = true;
     }
 }

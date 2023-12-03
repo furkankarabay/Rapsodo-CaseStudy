@@ -11,11 +11,13 @@ public class SwitchCamera : MonoBehaviour
     private void OnEnable()
     {
         EventsSystem.OnGameStarted += OnGameStarted;
+        EventsSystem.OnGameFinished += OnGameFinished;
     }
 
     private void OnDisable()
     {
         EventsSystem.OnGameStarted -= OnGameStarted;
+        EventsSystem.OnGameFinished -= OnGameFinished;
 
     }
 
@@ -23,6 +25,11 @@ public class SwitchCamera : MonoBehaviour
     {
         upsideDownCamera.SetActive(false);
         tpsCamera.SetActive(true);
+    }
 
+    private void OnGameFinished(bool isWon)
+    {
+        upsideDownCamera.SetActive(true);
+        tpsCamera.SetActive(false);
     }
 }

@@ -11,21 +11,6 @@ public class Timer : MonoBehaviour
 
     private bool isActivated = false;
 
-    private void OnEnable()
-    {
-        EventsSystem.OnGameStarted += OnGameStarted;
-    }
-
-    private void OnDisable()
-    {
-        EventsSystem.OnGameStarted -= OnGameStarted;
-    }
-
-    private void OnGameStarted()
-    {
-        Debug.Log("Bum");
-        isActivated = true;
-    }
     private void Update()
     {
         if (!isActivated)
@@ -41,6 +26,7 @@ public class Timer : MonoBehaviour
     public void ToggleTimer()
     {
         isActivated = !isActivated;
+        gameObject.SetActive(isActivated);
 
         if(isActivated)
         {

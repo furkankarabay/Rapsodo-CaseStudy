@@ -9,22 +9,24 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
 
     public Healthbar healthbar;
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
-        Cursor.lockState = CursorLockMode.Locked;
-    }
     private void OnEnable()
     {
+        EventsSystem.OnGameStarted += OnGameStarted;
         EventsSystem.OnDamagedByObstacle += DecreaseHealth;
         EventsSystem.OnPowerupHealthEffect += ApplyPowerupEffect;
     }
 
     private void OnDisable()
     {
+        EventsSystem.OnGameStarted -= OnGameStarted;
         EventsSystem.OnDamagedByObstacle -= DecreaseHealth;
         EventsSystem.OnPowerupHealthEffect -= ApplyPowerupEffect;
+    }
+    private void OnGameStarted()
+    {
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
+        healthbar.SetHealth(currentHealth);
     }
 
     private void ApplyPowerupEffect(int amount)
@@ -35,6 +37,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void IncreaseHealth(int amount)
     {
+        if (currentHealth + amount > maxHealth)
+            return;
+
         currentHealth += amount;
         healthbar.SetHealth(currentHealth);
         CheckHealthLevel();
@@ -49,9 +54,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void CheckHealthLevel()
     {
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
-
+            EventsSystem.OnGameFinished?.Invoke(false);
         }
     }
 }

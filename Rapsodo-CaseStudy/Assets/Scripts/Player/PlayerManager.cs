@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.hasGameStarted)
+        if (!GameManager.hasGameStarted || GameManager.hasGameFinished)
             return;
 
         inputManager.HandleAllInputs();
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GameManager.hasGameStarted)
+        if (!GameManager.hasGameStarted || GameManager.hasGameFinished)
             return;
 
         playerLocomotion.HandleAllMovement();
