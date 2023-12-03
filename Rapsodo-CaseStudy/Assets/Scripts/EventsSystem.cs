@@ -16,4 +16,12 @@ public class EventsSystem
     public static Action<int> OnPowerupHealthEffect;
 
     #endregion
+
+    #region Game Flow
+
+    public static Action OnCountdownIsOver;
+    public static Action OnGameStarted;
+    public static Action OnGameFinished;
+
+    #endregion
 }
