@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private Animator playerAnimator;
-    private InputManager inputManager;
+    private InputSystem inputManager;
     private PlayerLocomotion playerLocomotion;
+    public bool IsInteracting { get; private set; }
 
-    public bool isInteracting;
     private void Awake()
     {
-        inputManager = GetComponent<InputManager>();
+        inputManager = GetComponent<InputSystem>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         playerAnimator = GetComponent<Animator>();
     }
@@ -28,8 +28,12 @@ public class PlayerManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        playerLocomotion.isJumping = playerAnimator.GetBool("isJumping");
+        playerLocomotion.IsJumping = playerAnimator.GetBool("isJumping");
 
-        isInteracting = playerAnimator.GetBool("isInteracting");
+        IsInteracting = playerAnimator.GetBool("isInteracting");
+
+        playerLocomotion.IsJumping = playerAnimator.GetBool("isJumping");
+
+        playerAnimator.SetBool("isGrounded", playerLocomotion.IsGrounded);
     }
 }

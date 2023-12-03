@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorManager : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     private int horizontal;
     private int vertical;
 
@@ -18,7 +18,6 @@ public class AnimatorManager : MonoBehaviour
     public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
     {
         animator.SetBool("isInteracting", isInteracting);
-        Debug.Log("SET BOOOOOOL");
         animator.CrossFade(targetAnimation, 0.2f);
     }
 

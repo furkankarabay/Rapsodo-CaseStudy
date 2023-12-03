@@ -758,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 2706539319811158271}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1775,12 +1775,13 @@ GameObject:
   - component: {fileID: 1687293249832683706}
   - component: {fileID: 535854559381927839}
   - component: {fileID: 3699515151256386405}
+  - component: {fileID: 1978035748079082635}
   - component: {fileID: 2683543711237800126}
   - component: {fileID: 488064521348395894}
   - component: {fileID: 7917724956450557975}
   m_Layer: 0
   m_Name: PlayerRoot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1814,7 +1815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e734982c99d5c4d8bc2482aa53d702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
   verticalInput: 0
   horizontalInput: 0
 --- !u!114 &1687293249832683706
@@ -1841,8 +1841,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b841cde47deda14e938f4dcffdee744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  inAirTimer: 0
+  leapingVelocity: 3
+  fallingVelocity: 33
+  raycastHeightOffset: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkingSpeed: 1
+  runningSpeed: 8
   rotationSpeed: 15
+  jumpHeight: 2
+  gravityIntensity: -10
+  IsJumping: 0
+  IsGrounded: 0
 --- !u!114 &3699515151256386405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,6 +1867,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747acaba7a463ae4897dba9d3ce1a012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2683543711237800126}
+--- !u!114 &1978035748079082635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6996171062569068638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc4027ef69bb4e45a4bcc36f4784d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2683543711237800126
 Animator:
   serializedVersion: 5
@@ -1864,7 +1889,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6996171062569068638}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 2b17ace9649dea648af5708a47ef32e8, type: 3}
+  m_Avatar: {fileID: 9000000, guid: e8f74749f363c60448e9ba15a95d5a1c, type: 2}
   m_Controller: {fileID: 9100000, guid: ac57f1f44366b34429d8ecc0bea0848a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
